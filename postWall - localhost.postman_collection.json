@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "7d822d60-918b-455a-8860-0a0087dfb4b7",
+		"name": "postWall - localhost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3846885"
+	},
+	"item": [
+		{
+			"name": "/posts/read",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3007/posts/read",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"posts",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDEyMzkxOSwiZXhwIjoxNjU0NzI4NzE5fQ.fk492jrKtNN7VEpLAL6zgswla7GWIbdAvyhAq6NBHik",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"content\":\"post11\",\r\n            \"image\":\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3007/posts/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"posts",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readUserAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3007/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/sign_up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"name\":\"jamie\",\r\n            \"email\":\"b95170080@gmail.com\",\r\n            \"password\":\"Absdf1234567\",\r\n            \"confirmPassword\":\"Absdf1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3007/user/sign_up",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"user",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/sign_in",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTUyNDg4YjUwZTQzYmFkN2MyZWU3MiIsImlhdCI6MTY1Mzk0MTM4NCwiZXhwIjoxNjUzOTQxMzg0fQ.6HTP8bNGd-3Ih4S-qdE3N8j7KmcOFnWsW7XnpNhHntA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"email\":\"b95170080@gmail.com\",\r\n            \"password\":\"Absdf1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3007/user/sign_in",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"user",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDExMzI5OCwiZXhwIjoxNjU0NzE4MDk4fQ.SQDzeBOjJKcJso4Si-yPK6IgO3VVUxevyeYtfxf124w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"userId\":\"6297c37f5956ebf46cebeeab\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3007/user/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/updatePassword",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDEyMDA2OSwiZXhwIjoxNjU0NzI0ODY5fQ.V5wKgtZJRcHn6ULU5D0ZGtmENZOPEt_mE97hD-Fwknw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"password\":\"bC1234567\",\r\n            \"comfirmPassword\":\"bC1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3007/user/updatePassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"user",
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/profile",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDEyMjc4MSwiZXhwIjoxNjU0NzI3NTgxfQ.f6damnUXKIpXm3P1ffoaEeN381gvCU-5t0yJAjmm5HA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3007/user/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

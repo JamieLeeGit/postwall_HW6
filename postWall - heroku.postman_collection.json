@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "b5beabc5-f72a-47f4-85b3-a36d825be61c",
+		"name": "postWall - heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3846885"
+	},
+	"item": [
+		{
+			"name": "readPosts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://postwall-hw5.herokuapp.com/posts/read",
+					"protocol": "https",
+					"host": [
+						"postwall-hw5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPostsOne",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"userId\":\"628e3ef68d7eaf93b690e59f\",\r\n            \"content\":\"post33\",\r\n            \"image\":\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postwall-hw5.herokuapp.com/posts/create",
+					"protocol": "https",
+					"host": [
+						"postwall-hw5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readUserAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://postwall-hw5.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"postwall-hw5",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
