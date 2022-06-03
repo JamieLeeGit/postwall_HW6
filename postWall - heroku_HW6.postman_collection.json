@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "f5f4a9ff-161a-4f0d-8683-82b74f359bc3",
+		"name": "postWall - heroku_HW6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3846885"
+	},
+	"item": [
+		{
+			"name": "/posts/readAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/posts/readAll",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"readAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/posts/createOne",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {token}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"content\":\"post16\",\r\n            \"image\":\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/posts/createOne",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"createOne"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readUserAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/user/",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/sign_up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"name\":\"jamie1\",\r\n            \"email\":\"test01@gmail.com\",\r\n            \"password\":\"a1234567\",\r\n            \"confirmPassword\":\"a1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/user/sign_up",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/sign_in",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {token}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"email\":\"test01@gmail.com\",\r\n            \"password\":\"bC1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/user/sign_in",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/user/profile/62996f885b3879fc700ffcda",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"profile",
+						"62996f885b3879fc700ffcda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/profile",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {token}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"name\":\"jamie5\",\r\n            \"image\": \"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\",\r\n            \"gender\": \"woman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/user/profile/62996f885b3879fc700ffcda",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"profile",
+						"62996f885b3879fc700ffcda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/updatePassword",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {token}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"password\":\"bC1234567\",\r\n            \"comfirmPassword\":\"bC1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postwall-hw6.herokuapp.com/user/updatePassword",
+					"protocol": "https",
+					"host": [
+						"postwall-hw6",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
