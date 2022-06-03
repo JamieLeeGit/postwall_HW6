@@ -38,6 +38,11 @@ const user = {
     console.log("signUp");
     let { email, password, name } = req.body;
 
+    const user = await User.findOne({ email });
+    if(user){
+      return appError(httpStatus.BAD_REQUEST, "此 email 已註冊", next);
+    }
+
     const hashPassword = await getHashPassword(password);
     const newUser = await User.create({
       email,
