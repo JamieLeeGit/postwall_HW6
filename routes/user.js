@@ -9,28 +9,16 @@ router.route("/")
   .get(UserControllers.readUserAll);
 
 router.route("/sign_up")
-  .post(
-    isValidator,
-    handleErrorAsync(async (req, res, next) => UserControllers.signUp(req, res, next))
-  );
+  .post(isValidator, handleErrorAsync(UserControllers.signUp));
 
 router.route("/sign_in")
-  .post(handleErrorAsync(async (req, res, next) => UserControllers.signIn(req, res, next)));
+  .post(handleErrorAsync(UserControllers.signIn));
 
 router.route("/updatePassword")
-  .post(
-    isAuth,
-    handleErrorAsync(async (req, res, next) => UserControllers.updatePassword(req, res, next))
-  );
+  .post(isAuth, handleErrorAsync(UserControllers.updatePassword));
 
-router.route("/profile")
-  .post(
-    isAuth,
-    handleErrorAsync(async (req, res, next) => UserControllers.readProfileOne(req, res, next))
-  )
-  .patch(
-    isAuth,
-    handleErrorAsync(async (req, res, next) => UserControllers.updateProfileOne(req, res, next))
-  );
+router.route("/profile/:id")
+  .get(handleErrorAsync(UserControllers.readProfileOne))
+  .patch(isAuth, handleErrorAsync(UserControllers.updateProfileOne));
 
 module.exports = router;

@@ -38,13 +38,14 @@ const user = {
     console.log("signUp");
     let { email, password, name } = req.body;
 
+    const hashPassword = await getHashPassword(password);
     const newUser = await User.create({
       email,
-      password: getHashPassword(password),
+      password:hashPassword ,
       name,
     });
 
-    generateJWT(newUser, httpStatus.CREATED, res);
+    generateJWT(newUser, httpStatus.CREATED, res);    
   },
   /**
    * 登入
@@ -57,22 +58,24 @@ const user = {
 
     let { email, password } = req.body;
 
+    
     if (!email || !password) {
-      console.log("欄位不可為值");
-      return appError(httpStatus.BAD_REQUEST, "欄位不可為值", next);
+      console.log("欄位不可為空值");
+      return appError(httpStatus.BAD_REQUEST, "欄位不可為空值", next);
     }
 
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
-      console.log("user 帳號或密碼錯誤");
+      console.log("找不到 user 資料");
+
+      //訊息不明寫，減少一點被試帳號密碼風險
       return appError(httpStatus.BAD_REQUEST, "帳號或密碼錯誤", next);
     }
 
-    // 密碼比較是否一致
     const isValidated = await bcrypt.compare(password, user.password);
 
     if (!isValidated) {
-      console.log("isValidated 帳號或密碼錯誤");
+      console.log("密碼不一致");
       return appError(httpStatus.BAD_REQUEST, "帳號或密碼錯誤", next);
     }
 
@@ -86,9 +89,18 @@ const user = {
    */
    async readProfileOne(req, res, next) {
     console.log("readProfileOne");
-    const user = await User.findOne({_id: req.user.id});
+    const user = await User.findOne({_id: req.params.id});
 
-    handleSuccess(res, httpStatus.OK, user);
+    if(user){
+      const result = {
+        "success": true,
+        "user": user
+      };
+  
+      handleSuccess(res, httpStatus.OK, result);
+    }else{
+      return appError(httpStatus.BAD_REQUEST, "找不到 user 資料", next);
+    }    
   },
   /**
    * 修改個人檔案
@@ -101,9 +113,13 @@ const user = {
 
     console.log("updateProfileOne");
 
-    const user = await User.findByIdAndUpdate(req.user.id, { name, image, gender });
+    const user = await User.findByIdAndUpdate(req.params.id, { name, image, gender });
 
-    generateJWT(user, httpStatus.OK, res);
+    if(user){
+      generateJWT(user, httpStatus.OK, res);
+    }else{
+      return appError(httpStatus.BAD_REQUEST, "找不到 user 資料", next);
+    }
   },
   /**
    * 忘記密碼
@@ -123,7 +139,11 @@ const user = {
     const newPassword = await getHashPassword(password);
     const user = await User.findByIdAndUpdate( req.user.id, { password:newPassword });
 
-    generateJWT(user, httpStatus.OK, res);
+    if(user){
+      generateJWT(user, httpStatus.OK, res);
+    }else{
+      return appError(httpStatus.BAD_REQUEST, "找不到 user 資料", next);
+    }
   },
   /**
    * 讀取所有user資料(測試用)
@@ -133,8 +153,13 @@ const user = {
   async readUserAll(req, res, next) {
     console.log("readUserAll");
 
-    const data = await User.find();
-    handleSuccess(res, httpStatus.OK, data);
+    const users = await User.find();
+    const result = {
+      "success": true,
+      "users": users
+    };
+
+    handleSuccess(res, httpStatus.OK, result);
   },
 };
 

@@ -7,12 +7,12 @@
 	},
 	"item": [
 		{
-			"name": "/posts/read",
+			"name": "/posts/readAll",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3007/posts/read",
+					"raw": "http://127.0.0.1:3007/posts/readAll",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -23,26 +23,26 @@
 					"port": "3007",
 					"path": [
 						"posts",
-						"read"
+						"readAll"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "/posts/create",
+			"name": "/posts/createOne",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDEyMzkxOSwiZXhwIjoxNjU0NzI4NzE5fQ.fk492jrKtNN7VEpLAL6zgswla7GWIbdAvyhAq6NBHik",
+						"value": "Bearer {token}",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n            \"content\":\"post11\",\r\n            \"image\":\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\"\r\n}",
+					"raw": "{\r\n            \"content\":\"post15\",\r\n            \"image\":\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -50,7 +50,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3007/posts/create",
+					"raw": "http://127.0.0.1:3007/posts/createOne",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -61,7 +61,7 @@
 					"port": "3007",
 					"path": [
 						"posts",
-						"create"
+						"createOne"
 					]
 				}
 			},
@@ -73,7 +73,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3007/user",
+					"raw": "http://127.0.0.1:3007/user/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -83,7 +83,8 @@
 					],
 					"port": "3007",
 					"path": [
-						"user"
+						"user",
+						""
 					]
 				}
 			},
@@ -96,7 +97,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n            \"name\":\"jamie\",\r\n            \"email\":\"b95170080@gmail.com\",\r\n            \"password\":\"Absdf1234567\",\r\n            \"confirmPassword\":\"Absdf1234567\"\r\n}",
+					"raw": "{\r\n            \"name\":\"jamie2\",\r\n            \"email\":\"test01@gmail.com\",\r\n            \"password\":\"aaaaa111111\",\r\n            \"confirmPassword\":\"aaaaa111111\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -128,13 +129,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTUyNDg4YjUwZTQzYmFkN2MyZWU3MiIsImlhdCI6MTY1Mzk0MTM4NCwiZXhwIjoxNjUzOTQxMzg0fQ.6HTP8bNGd-3Ih4S-qdE3N8j7KmcOFnWsW7XnpNhHntA",
+						"value": "Bearer {token}",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n            \"email\":\"b95170080@gmail.com\",\r\n            \"password\":\"Absdf1234567\"\r\n}",
+					"raw": "{\r\n            \"email\":\"b95170080@gmail.com\",\r\n            \"password\":\"bC1234567\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -161,18 +162,21 @@
 		},
 		{
 			"name": "/user/profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDExMzI5OCwiZXhwIjoxNjU0NzE4MDk4fQ.SQDzeBOjJKcJso4Si-yPK6IgO3VVUxevyeYtfxf124w",
+						"value": "",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n            \"userId\":\"6297c37f5956ebf46cebeeab\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -180,7 +184,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3007/user/profile",
+					"raw": "http://127.0.0.1:3007/user/profile/6297c37f5956ebf46cebeeab",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -191,7 +195,42 @@
 					"port": "3007",
 					"path": [
 						"user",
-						"profile"
+						"profile",
+						"6297c37f5956ebf46cebeeab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user/profile",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {token}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3007/user/profile/6297c37f5956ebf46cebeeab",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3007",
+					"path": [
+						"user",
+						"profile",
+						"6297c37f5956ebf46cebeeab"
 					]
 				}
 			},
@@ -204,7 +243,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDEyMDA2OSwiZXhwIjoxNjU0NzI0ODY5fQ.V5wKgtZJRcHn6ULU5D0ZGtmENZOPEt_mE97hD-Fwknw",
+						"value": "Bearer {token}",
 						"type": "text"
 					}
 				],
@@ -230,39 +269,6 @@
 					"path": [
 						"user",
 						"updatePassword"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/user/profile",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTdjMzdmNTk1NmViZjQ2Y2ViZWVhYiIsImlhdCI6MTY1NDEyMjc4MSwiZXhwIjoxNjU0NzI3NTgxfQ.f6damnUXKIpXm3P1ffoaEeN381gvCU-5t0yJAjmm5HA",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "http://127.0.0.1:3007/user/profile",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "3007",
-					"path": [
-						"user",
-						"profile"
 					]
 				}
 			},

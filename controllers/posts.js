@@ -10,19 +10,15 @@ const posts = {
      * @param {resquest} req 連線請求
      * @param {respones} res 回應結果
      */
-    async readPost(req, res, next){   
-            console.log('readPosts');
-            const data = req.body;
-            const pageNumber = data.pageNumber ? parseInt(data.pageNumber) : 0;
-            const limit = data.limit ? parseInt(data.limit) : 10;
+    async readPostAll(req, res, next){   
+            console.log('readPostAll');
+            const allPost = await Post.find();
+            const result = {
+                "success": true,
+                "posts": allPost
+            };
 
-            const result = await Post.find()/*
-                                .sort({createAt: -1})
-                                .skip(pageNumber * limit)
-                                .limit(limit)
-                                .populate('userId');*/
             handleSuccess(res, httpStatus.OK, result);             
-            
     },
     /**
      * 新增單筆貼文
@@ -31,9 +27,9 @@ const posts = {
     async createPostsOne(req, res, next){
             console.log('createPostsOne');
 
-            const data = req.body;
+            const { content, image } = req.body;
             // 檢查所有必填欄位
-            if(req.user.id && data.content){
+            if(req.user.id && content){
                 // 取得userId    
                 const userProfile = await User.findOne({ _id: req.user.id});
 
@@ -42,21 +38,22 @@ const posts = {
                     (
                         {
                             userId: userProfile._id,
-                            content: data.content,
-                            image: data.image
+                            content: content,
+                            image: image
                         }
                     );
     
-                    if(newPost){
-                       handleSuccess(res, httpStatus.OK, newPost);
-                    }else{
-                        return next(appError(400,"新增資料失敗",next));
-                    }
+                    const result = {
+                        "success": true,
+                        "post": newPost
+                    };
+                    
+                    handleSuccess(res, httpStatus.OK, result);
                 }else{
-                    return next(appError(404,"找不到 user 資料",next));
+                    return next(appError(404,"找不到 user 資料，沒有發文權限",next));
                 }         
             }else{                
-                return next(appError(400,"未填寫 userId 或 content",next));
+                return next(appError(400,"缺少 userId 或 content",next));
             }
     }
 }

@@ -30,7 +30,6 @@ const isAuth = handleErrorAsync(async (req, res, next)=>{
                     console.log(payload);
                     return next(appError(httpStatus.UNAUTHORIZED, "登入錯誤，token過期！", next));
                 }
-                //reject(err); //  "message": "系統錯誤，請恰系統管理員"
                 return next(appError(httpStatus.UNAUTHORIZED, "登入錯誤！", next));
               } else {
                 resolve(payload);
@@ -56,8 +55,10 @@ const isValidator = handleErrorAsync(async (req, res, next)=>{
         return next(appError(httpStatus.BAD_REQUEST, "密碼不一致", next))
     }
 
-    if(!validator.isLength(password, { min: 8 })){
-        return next(appError(httpStatus.BAD_REQUEST, "密碼長度需大於8", next));
+    if(!validator.isLength(password, { min: 8 }) 
+        || validator.isNumeric(password) 
+        || validator.isAlpha(password)){
+        return next(appError(httpStatus.BAD_REQUEST, "密碼長度需大於8，且須英數混合", next));
     }
     
     if(!validator.isEmail(email)){

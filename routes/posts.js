@@ -5,13 +5,11 @@ const { isAuth } = require('../middleware/auth');
 const handleErrorAsync = require("../service/handleErrorAsync");
 
 
-router.post(
-    '/read', 
-    handleErrorAsync(async (req, res, next) =>PostsControllers.readPost(req, res, next)));
+router
+    .get('/readAll',handleErrorAsync(PostsControllers.readPostAll));
 
-router.post(
-    '/create',
-    isAuth,
-    handleErrorAsync(async (req, res, next) =>PostsControllers.createPostsOne(req, res, next)));
+router
+    .post('/createOne',isAuth, handleErrorAsync(PostsControllers.createPostsOne)
+);
 
 module.exports = router;
